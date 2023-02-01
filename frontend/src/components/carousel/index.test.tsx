@@ -2,9 +2,11 @@ import Carousel, { ICarouselProps } from "./index";
 import { fireEvent, render, screen } from "@testing-library/react";
 import { FC } from "react";
 
+const MOCK_CAROUSEL_LIST_DATA = [0, 1, 2];
+
 const TestModule: FC<Partial<ICarouselProps>> = (props) => (
-  <Carousel {...props}>
-    {[0, 1, 2].map(num => <div key={num}>{num}</div>)}
+  <Carousel carouselIds={MOCK_CAROUSEL_LIST_DATA.map(id => id)} {...props}>
+    {MOCK_CAROUSEL_LIST_DATA.map(num => <div key={num}>{num}</div>)}
   </Carousel>
 )
 

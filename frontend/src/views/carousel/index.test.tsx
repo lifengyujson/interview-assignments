@@ -1,16 +1,16 @@
 import Carousel from "./index";
-import { fireEvent, render, screen } from "@testing-library/react";
-import { mockData } from '../../mock/data'
+import { render, screen } from "@testing-library/react";
+import { CAROUSEL_MOCK_DATA } from '../../mock/data'
 
-describe("Carousel-Page test", () => {
-  test("find carousel-wrapper", () => {
+describe("test carouselView", () => {
+  test("test carousel-wrapper", () => {
     render(<Carousel carouselData={[]} />)
     const app = screen.getByTestId("carousel-wrapper")
     expect(app).toBeInTheDocument()
   });
 
-  test("find the carousel-item in the carousel-wrapper", () => {
-    render(<Carousel carouselData={mockData} />)
+  test("test the carousel-item", () => {
+    render(<Carousel carouselData={CAROUSEL_MOCK_DATA} />)
 
     expect(screen.getByTestId("carousel-wrapper")).toBeInTheDocument()
     expect(screen.getByText("Tablet")).toBeInTheDocument()
@@ -20,8 +20,8 @@ describe("Carousel-Page test", () => {
 
   });
 
-  test("find the spliced item in the carousel-wrapper", () => {
-    render(<Carousel carouselData={mockData} />)
+  test("test the spliced item in the carousel-wrapper", () => {
+    render(<Carousel carouselData={CAROUSEL_MOCK_DATA} />)
 
     const items = screen.queryAllByTestId("carousel-item")
     // 最右边拼接的第一张内容是否和默认第一张相同
